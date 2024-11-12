@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cognify - Aplicaciones Adicionales</title>
+    <!-- Incluir Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0d1117] text-white font-sans">
+
+    <!-- Encabezado con Logo -->
+    <header class="bg-[#161b22] shadow-lg py-6">
+        <div class="container mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-4">
+                <img src="Recursos/CognifyLogo.png" alt="Cognify Logo" class="w-12 h-12"> <!-- Reemplaza con la ruta de tu logo -->
+                <div>
+                    <h1 class="text-4xl font-extrabold text-cyan-400 animate-pulse">Cognify</h1>
+                    <p class="text-sm text-cyan-300">Transformando la rehabilitación criminal</p>
+                </div>
+            </div>
+            <nav class="space-x-4">
+                <a href="index.html" class="text-cyan-300 hover:text-white">Inicio</a>
+                <a href="about.html" class="text-cyan-300 hover:text-white">Acerca de</a>
+                <a href="process_info.html" class="text-cyan-300 hover:text-white">Cómo Funciona</a>
+                <a href="additional_applications.html" class="text-cyan-300 hover:text-white">Aplicaciones</a>
+                <a href="contact.html" class="text-cyan-300 hover:text-white">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container mx-auto px-6 py-16">
+        <section class="text-center mb-16">
+            <h2 class="text-5xl font-bold text-cyan-400 mb-4 animate-pulse">Aplicaciones Adicionales de Cognify</h2>
+            <p class="text-xl text-cyan-200 mb-8">Además de la rehabilitación criminal, Cognify puede aplicarse en áreas de salud mental y bienestar.</p>
+        </section>
+
+        <!-- Secciones de Aplicaciones Adicionales -->
+        <section class="mb-16">
+            <h3 class="text-3xl font-bold text-cyan-400 mb-4">Tratamiento de Pérdida de Memoria</h3>
+            <hr class="border-cyan-600 mb-8 mx-auto w-1/2">
+            <p class="text-cyan-200 mb-8">
+                Cognify puede ayudar a pacientes con pérdida severa de memoria a recuperar recuerdos pasados, mejorando su calidad de vida y autonomía.
+            </p>
+
+            <h3 class="text-3xl font-bold text-cyan-400 mb-4">Tratamiento de PTSD</h3>
+            <hr class="border-cyan-600 mb-8 mx-auto w-1/2">
+            <p class="text-cyan-200 mb-8">
+                Para pacientes que sufren de trastorno de estrés postraumático, es posible implantar recuerdos positivos que reemplacen los negativos, facilitando su recuperación.
+            </p>
+        </section>
+
+        <!-- Botón de Volver al Inicio -->
+        <div class="text-center mt-8">
+            <a href="index.html" class="py-2 px-4 bg-transparent border-2 border-cyan-400 text-cyan-400 rounded-lg hover:bg-cyan-400 hover:text-[#0d1117] transition duration-200 neon-effect">
+                Volver al Inicio
+            </a>
+        </div>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="bg-[#161b22] py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-cyan-300">&copy; 2024 Cognify. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Estilos adicionales para efectos de neón -->
+    <style>
+        .neon-effect {
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 25px rgba(0, 255, 255, 0.6);
+        }
+        .animate-pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+
+</body>
+</html>

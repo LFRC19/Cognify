@@ -1,0 +1,54 @@
+@model Cognify.Models.SimulationResultViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cognify - Resultados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <div class="bg-white p-6 rounded shadow">
+            <h2 class="text-2xl font-bold mb-4">Simulación Completa</h2>
+            <p class="mb-4">
+                <strong>Nombre:</strong> @Model.Name<br>
+                <strong>Edad:</strong> @Model.Age<br>
+                <strong>Tipo de Crimen:</strong> @Model.CrimeTypeDisplay
+            </p>
+            <p class="mb-4">
+                Ha experimentado años de recuerdos artificiales en solo unos minutos.
+            </p>
+            <!-- Mostrar detalles de personalización -->
+            @if (Model.CrimeType == "violent")
+            {
+                <div class="mb-4">
+                    <p><strong>Intensidad de Empatía:</strong> Nivel @Model.EmpathyLevel</p>
+                </div>
+            }
+            else if (Model.CrimeType == "financial")
+            {
+                <div class="mb-4">
+                    <p><strong>Monto Simulado de Pérdidas:</strong> $@Model.LossAmount</p>
+                </div>
+            }
+            else if (Model.CrimeType == "hate")
+            {
+                <div class="mb-4">
+                    <p><strong>Nivel de Diversidad Experimentado:</strong> @Model.DiversityLevelDisplay</p>
+                </div>
+            }
+            <p class="mb-4">
+                Está listo para reintegrarse a la sociedad y comenzar una nueva vida alejado del crimen.
+            </p>
+            <div class="text-right">
+                <a href="@Url.Action("Index", "Home")" class="py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600">
+                    Finalizar
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

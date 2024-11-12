@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cognify - Resultados de Simulación</title>
+    <!-- Incluir Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-[#0d1117] text-white font-sans">
+
+    <!-- Encabezado con Logo -->
+    <header class="bg-[#161b22] shadow-lg py-6">
+        <div class="container mx-auto flex items-center justify-between px-6">
+            <div class="flex items-center space-x-4">
+                <img src="Recursos/CognifyLogo.png" alt="Cognify Logo" class="w-12 h-12"> <!-- Reemplaza con la ruta de tu logo -->
+                <div>
+                    <h1 class="text-4xl font-extrabold text-cyan-400 animate-pulse">Cognify</h1>
+                    <p class="text-sm text-cyan-300">Transformando la rehabilitación criminal</p>
+                </div>
+            </div>
+            <nav class="space-x-4">
+                <a href="index.html" class="text-cyan-300 hover:text-white">Inicio</a>
+                <a href="about.html" class="text-cyan-300 hover:text-white">Acerca de</a>
+                <a href="process_info.html" class="text-cyan-300 hover:text-white">Cómo Funciona</a>
+                <a href="additional_applications.html" class="text-cyan-300 hover:text-white">Aplicaciones</a>
+                <a href="contact.html" class="text-cyan-300 hover:text-white">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="container mx-auto px-6 py-16">
+        <section class="text-center mb-8">
+            <h2 class="text-5xl font-bold text-cyan-400 mb-4 animate-pulse">Resultados de Simulación</h2>
+            <p class="text-xl text-cyan-200">La simulación ha concluido exitosamente. A continuación se detallan los resultados personalizados.</p>
+        </section>
+
+        <!-- Resultados de la Simulación -->
+        <div class="bg-[#161b22] p-12 rounded-lg shadow-lg neon-border">
+            <h3 class="text-3xl font-bold text-cyan-400 mb-6">Resumen del Sujeto</h3>
+            <p class="text-lg mb-4">
+                <strong>Nombre:</strong> <span id="displayName"></span><br>
+                <strong>Edad:</strong> <span id="displayAge"></span><br>
+                <strong>Tipo de Crimen:</strong> <span id="displayCrimeType"></span>
+            </p>
+            <p class="text-cyan-200 mb-6">
+                Ha experimentado años de recuerdos artificiales en solo unos minutos.
+            </p>
+
+            <!-- Detalles Personalizados de Simulación -->
+            <div id="violent-result" class="hidden mb-6">
+                <p class="text-lg text-cyan-300"><strong>Intensidad de Empatía:</strong> Nivel <span id="displayEmpathyLevel"></span></p>
+            </div>
+            <div id="financial-result" class="hidden mb-6">
+                <p class="text-lg text-cyan-300"><strong>Monto Simulado de Pérdidas:</strong> $<span id="displayLossAmount"></span></p>
+            </div>
+            <div id="hate-result" class="hidden mb-6">
+                <p class="text-lg text-cyan-300"><strong>Nivel de Diversidad Experimentado:</strong> <span id="displayDiversityLevel"></span></p>
+            </div>
+
+            <p class="text-cyan-200 mb-8">
+                Está listo para reintegrarse a la sociedad y comenzar una nueva vida alejado del crimen.
+            </p>
+
+            <!-- Botón de Continuar -->
+            <div class="text-center">
+                <a href="family_info.html" class="py-3 px-6 bg-transparent border-2 border-green-400 text-green-400 rounded-lg hover:bg-green-400 hover:text-[#0d1117] transition duration-200 neon-effect">
+                    Continuar
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script para mostrar los datos y obtenerlos de randomuser -->
+    <script>
+        axios.get('https://randomuser.me/api/?nat=es')
+            .then(function(response) {
+                const user = response.data.results[0];
+                const name = `${user.name.first} ${user.name.last}`;
+                const age = user.dob.age;
+
+                document.getElementById('displayName').textContent = name;
+                document.getElementById('displayAge').textContent = age;
+
+                // Generar un tipo de crimen aleatorio
+                const crimeTypes = ['violent', 'financial', 'hate'];
+                const crimeType = crimeTypes[Math.floor(Math.random() * crimeTypes.length)];
+                const crimeTypeDisplay = {
+                    'violent': 'Delito Violento',
+                    'financial': 'Crimen Financiero',
+                    'hate': 'Crimen de Odio'
+                };
+
+                document.getElementById('displayCrimeType').textContent = crimeTypeDisplay[crimeType];
+
+                // Valores de personalización para la simulación
+                const urlParams = new URLSearchParams(window.location.search);
+                const empathyLevel = urlParams.get('empathy_level');
+                const lossAmount = urlParams.get('loss_amount');
+                const diversityLevel = urlParams.get('diversity_level');
+
+                // Mostrar detalles según el tipo de crimen
+                if (crimeType === 'violent') {
+                    document.getElementById('violent-result').classList.remove('hidden');
+                    document.getElementById('displayEmpathyLevel').textContent = empathyLevel;
+                } else if (crimeType === 'financial') {
+                    document.getElementById('financial-result').classList.remove('hidden');
+                    document.getElementById('displayLossAmount').textContent = lossAmount;
+                } else if (crimeType === 'hate') {
+                    document.getElementById('hate-result').classList.remove('hidden');
+                    const diversityLevelDisplay = {
+                        'low': 'Bajo',
+                        'medium': 'Medio',
+                        'high': 'Alto'
+                    };
+                    document.getElementById('displayDiversityLevel').textContent = diversityLevelDisplay[diversityLevel];
+                }
+            })
+            .catch(function(error) {
+                console.error('Error al obtener datos de la API:', error);
+            });
+    </script>
+
+    <!-- Pie de Página -->
+    <footer class="bg-[#161b22] py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-cyan-300">&copy; 2024 Cognify. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Estilos adicionales para efectos de neón -->
+    <style>
+        .neon-effect {
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 25px rgba(0, 255, 255, 0.6);
+        }
+        .neon-border {
+            border: 2px solid rgba(0, 255, 255, 0.6);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.7);
+        }
+        .animate-pulse {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+
+</body>
+</html>
